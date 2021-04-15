@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>projects | coolmandude545</title>
+        <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="tilt.css">
+        <link rel="icon" type="image/png" href="https://coolmandude545.github.io/favicon.png"/>
+    </head>
+    <body>
+          <div class="bars" id="nav-action">
+            <span class="bar"> </span>
+          </div>
+          <!--Navbar Links-->
+          <nav id="nav">
+            <ul>
+              <li class="shape-circle circle-one"><a href="https://coolmandude545.github.io/freebobux">Don't Click</a></li>
+              <li class="shape-circle circle-two"><a href="#">Blog</a></li>
+              <li class="shape-circle circle-three"><a href="https://coolmandude545.github.io/projects">Projects</a></li>
+              <li class="shape-circle circle-five"><a href="https://coolmandude545.github.io/">Home</a></li>
+            </ul>
+          </nav>
+          <h2>Projects</h2>
+          <ul class="grid grid--xray">
+            <li class="grid__item">
+              <div class="grid__img grid__img--border">
+                <img src="punda.gif" style="border-radius: 25px;" width="500" height="500" class="tilt-effect" data-tilt-options='{ "extraImgs" : 4, "opacity" : 0.5, "movement": { "perspective" : 500, "translateX" : -15, "translateY" : -15, "translateZ" : 20, "rotateX" : 15, "rotateY" : 15 } }' alt="grid01" />
+              </div>
+            </li>
+            <li class="grid__item">
+              <h3 style="font-size: 1.7vw;">Punda Stroke Sim&trade;</h3>
+              <p>Inspired by Punda's 3AM creation. <a target="_blank" href="https://coolmandude545.github.io/pundastrokesim">Try it yourself!</a></p>
+            </li>
+          </ul>
+          <ul class="grid grid--xray">
+            <li class="grid__item">
+          <div class="grid__img grid__img--border">
+            <img src="fltdesigns.png" style="border-radius: 25px;" width="500" height="500" class="tilt-effect" data-tilt-options='{ "extraImgs" : 4, "opacity" : 0.5, "movement": { "perspective" : 500, "translateX" : -15, "translateY" : -15, "translateZ" : 20, "rotateX" : 15, "rotateY" : 15 } }' alt="grid01" />
+          </div>
+        </li>
+        <li class="grid__item">
+          <h3>FLT Designs</h3>
+          <p>Currently a dev helping to make a freeware Boeing 727 for MSFS! <a target="_blank" href="https://discord.gg/X6wN7qSqGQ">Join the discord!</a></p>
+        </li>
+          </ul>
+          <ul class="grid grid--xray">
+            <li class="grid__item">
+          <div class="grid__img grid__img--border">
+            <img src="evergiven.jpg" style="border-radius: 25px;" width="500" height="500" class="tilt-effect" data-tilt-options='{ "extraImgs" : 4, "opacity" : 0.5, "movement": { "perspective" : 500, "translateX" : -15, "translateY" : -15, "translateZ" : 20, "rotateX" : 15, "rotateY" : 15 } }' alt="grid01" />
+          </div>
+        </li>
+        <li class="grid__item">
+          <h3 style="font-size: 1.7vw;">Flightsim.to Liveries</h3>
+          <p>I've made an assortment of random liveries. <a target="_blank" href="https://flightsim.to/profile/coolmandude545/uploads">Check them out!</a></p>
+        </li>
+          </ul>
+          <script src="tilt.js"></script>
+          <script>
+// Setting up the Variables
+var bars = document.getElementById("nav-action");
+var nav = document.getElementById("nav");
+
+
+//setting up the listener
+bars.addEventListener("click", barClicked, false);
+
+
+//setting up the clicked Effect
+function barClicked() {
+  bars.classList.toggle('active');
+  nav.classList.toggle('visible');
+}
+</script>
+    </body>
+</html>

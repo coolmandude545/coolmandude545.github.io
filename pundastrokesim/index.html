@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<head>
+    <title>Punda Stroke Simulator</title>
+</head>
+<body>
+    <h1>Punda Stroke Simulator&trade;</h1>
+    <form onsubmit="event.preventDefault(); getFormData();">
+        <label for="stroke">Strokeify</label>
+        <input type="username" id="stroke" name="stroke" required="">   
+        <br>
+        <br> 
+        <input type="submit" value="Submit">
+    <script>
+ function getMiniStroke(s) {
+    return s.charAt(Math.random() * s.length - 1);
+}
+function getStroke(s) {
+	v = [];
+  for (i = 0; i < Math.floor(s.length / 3); ++i) {
+  	v.push(getMiniStroke(s));
+  }
+  for (i = 0; i < v.length; ++i) {
+  	if (Math.random() > 0.5) {
+			s = v[i] + s;
+    } else {
+    	s = s.replaceAll(v[i], "");
+    }
+  }
+	return s;
+}
+function getFormData() {
+    var strokeify = document.getElementById('stroke').value;
+    var stroked = getStroke(strokeify);
+    document.getElementById("result").innerHTML = stroked;
+}
+    </script>
+    </form>
+    <h1>PuNDAed text:</h1>
+    <h2 id="result"></h2>
+    <br>
+    <h3>Original code by Punda#0001, converted to JS by Terminus#3791, website made by coolmandude545#8586.</h3>
+</body>
