@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>poggers you got free bobux</title>
+        <link rel="stylesheet" href="https://coolmandude545.github.io/main.css">
+    </head>
+    <body>
+        <video autoplay muted loop id="myVideo">
+            <source src="rick.mp4" type="video/mp4">
+          </video>
+          <div class="bars" id="nav-action">
+            <span class="bar"> </span>
+          </div>
+          <!--Navbar Links-->
+          <nav id="nav">
+            <ul>
+              <li class="shape-circle circle-one"><a href="https://coolmandude545.github.io/freebobux">Don't Click</a></li>
+              <li class="shape-circle circle-two"><a href="#">Blog</a></li>
+              <li class="shape-circle circle-three"><a href="#">Projects</a></li>
+              <li class="shape-circle circle-five"><a href="https://coolmandude545.github.io/">Home</a></li>
+            </ul>
+          </nav>
+          <script>
+// Setting up the Variables
+var bars = document.getElementById("nav-action");
+var nav = document.getElementById("nav");
+
+
+//setting up the listener
+bars.addEventListener("click", barClicked, false);
+
+
+//setting up the clicked Effect
+function barClicked() {
+  bars.classList.toggle('active');
+  nav.classList.toggle('visible');
+}
+</script>
+    </body>
+</html>
