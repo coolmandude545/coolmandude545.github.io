@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>What day is it?</title>
+    </head>
+    <body>
+        <h1 id="result"></h1>
+        <script>
+            function ordinal_suffix_of(i) {
+              var j = i % 10,
+                 k = i % 100;
+               if (j == 1 && k != 11) {
+                   return i + "st";
+               }
+                   if (j == 2 && k != 12) {
+                   return i + "nd";
+                }
+              if (j == 3 && k != 13) {
+                   return i + "rd";
+              }
+              return i + "th";
+            }
+            var date_diff_indays = function(date1, date2) {
+            dt1 = new Date(date1);
+            dt2 = new Date(date2);
+            return Math.floor((Date.UTC(dt2.getFullYear(), dt2.getMonth(), dt2.getDate()) - Date.UTC(dt1.getFullYear(), dt1.getMonth(), dt1.getDate()) ) /(1000 * 60 * 60 * 24));
+            }
+            var date = date_diff_indays('12/31/2020', Date());
+            var owo = date + 31
+            var almost_final_date = ordinal_suffix_of(owo);
+            var final_date_istg = ("Today is: " + "December " + almost_final_date + ", 2020");
+            document.getElementById("result").innerHTML = final_date_istg;
+        </script>
+    </body>
+</html>
