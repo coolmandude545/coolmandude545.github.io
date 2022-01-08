@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Build It 1:1 - Seattle 10,000 Completion Calculator</title>
+        <link rel="icon" type="image/png" href="pippenftslogo.jpg">
+        <meta name="title" content="Build It 1:1 - Seattle 10,000 Completion Calculator">
+    <meta name="description" content="A simple calculator that calculates the time it'll take to complete the ambitious Seattle 10,000 project.">
+    <meta content="https://coolmandude545.github.io/seattle/pippenftslogo.jpg" property="og:image" />
+
+    </head>
+    <body>
+        <h1>Seattle 10,000 Completion Calculator</h1>
+<br>
+        <img src='pippenftslogo.jpg' alt='poppenfts' width='150'>
+        <h2 id='quote'>pain</h2>
+        <br>
+        <br>
+        <form onsubmit="event.preventDefault(); getFormData();">
+            <label for="buildings">Enter the amount of completed buildings</label>
+            <input type="username" id="buildings" name="buildings" required="">   
+            <br>
+            <br> 
+            <input type="submit" value="Submit">
+        <h1 id="result"></h1>
+        <br>
+        <h2>Calculator built by coolmandude545&trade;</h2>
+        <h3>Get the completed building numbers from the <a href="https://docs.google.com/spreadsheets/d/1wuo2712neYPj5yg6jOAKiPH_tftMv4zUB9MZ6baMp3E/edit#gid=843869484">official event spreadsheet</a>.</h3>
+        <script>
+            const date_diff_indays = function(date1, date2) {
+            dt1 = new Date(date1);
+            dt2 = new Date(date2);
+            return Math.floor((Date.UTC(dt2.getFullYear(), dt2.getMonth(), dt2.getDate()) - Date.UTC(dt1.getFullYear(), dt1.getMonth(), dt1.getDate()) ) /(1000 * 60 * 60 * 24));
+            }
+            const projectDays = date_diff_indays('1/02/2022', Date());
+            function getFormData() {
+                const buildings = document.getElementById('buildings').value;
+                const buildingsPerDay = buildings / projectDays
+                const dayPrediction = Math.ceil(8350 / buildingsPerDay)
+                Date.prototype.addDays = function(days) {
+    var date = new Date(this.valueOf());
+    date.setDate(date.getDate() + days);
+    return date;
+}
+
+let date = new Date();
+
+            const finalDate = date.addDays(dayPrediction);
+            const data = Date.parse(finalDate)
+            var newTime = new Date(data).toDateString()
+console.log(newTime)
+            const finalString = `At this rate, the Seattle 10,000 project will be completed in ${dayPrediction} days (${newTime}).`
+                document.getElementById("result").innerHTML = finalString;
+            }
+        </script>
+        <script>
+            const randomNumber = Math.floor(Math.random() * (8 - 1 + 1) + 1)
+            let quote = ''
+            switch(randomNumber) {
+                case 1:
+                    quote = `<i>"seattle moment"</i>`
+                    break;
+                case 2:
+                    quote = `<i>"when the seattle is sus"</i>`
+                    break;
+                case 3:
+                    quote = `<i>"sattle > seattle"</i>`
+                    break;
+                case 4:
+                    quote = `<i>"when 1,000 isn't enough"</i>`
+                    break;
+                case 5:
+                    quote = `<i>"its the final countdown"</i>`
+                    break;
+                case 6:
+                    quote = `<i>"this will be our most insane project ever"</i>`
+                    break;
+                case 7:
+                    quote = `<i>"bob the builder says: keep building"</i>`
+                    break;
+                case 8:
+                    quote = `<i>"seattle: the rain city--now the pain city"</i>`
+                    break;
+                default:
+                    quote = `<i>how did we get here?</i>`
+                    break;
+            }
+            document.getElementById("quote").innerHTML = quote;
+        </script>
+    </body>
+</html>
