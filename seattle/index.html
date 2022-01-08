@@ -24,30 +24,28 @@
         <h1 id="result"></h1>
         <br>
         <h2>Calculator built by coolmandude545&trade;</h2>
-        <h3>Get the completed building numbers from the <a href="https://docs.google.com/spreadsheets/d/1wuo2712neYPj5yg6jOAKiPH_tftMv4zUB9MZ6baMp3E/edit#gid=843869484">official event spreadsheet</a>.</h3>
+        <h3>Get the completed building numbers from the <a target='_blank' href="https://docs.google.com/spreadsheets/d/1wuo2712neYPj5yg6jOAKiPH_tftMv4zUB9MZ6baMp3E/edit#gid=843869484">official event spreadsheet (use the "This Event" cell on F4)</a>.</h3>
         <script>
             const date_diff_indays = function(date1, date2) {
-            dt1 = new Date(date1);
-            dt2 = new Date(date2);
-            return Math.floor((Date.UTC(dt2.getFullYear(), dt2.getMonth(), dt2.getDate()) - Date.UTC(dt1.getFullYear(), dt1.getMonth(), dt1.getDate()) ) /(1000 * 60 * 60 * 24));
+                dt1 = new Date(date1);
+                dt2 = new Date(date2);
+                return Math.floor((Date.UTC(dt2.getFullYear(), dt2.getMonth(), dt2.getDate()) - Date.UTC(dt1.getFullYear(), dt1.getMonth(), dt1.getDate()) ) /(1000 * 60 * 60 * 24));
             }
             const projectDays = date_diff_indays('1/02/2022', Date());
+            console.log('Debug: Your computer thinks it\'s ' + Date() + '. Does this seem correct?')
             function getFormData() {
                 const buildings = document.getElementById('buildings').value;
                 const buildingsPerDay = buildings / projectDays
                 const dayPrediction = Math.ceil(8350 / buildingsPerDay)
                 Date.prototype.addDays = function(days) {
-    var date = new Date(this.valueOf());
-    date.setDate(date.getDate() + days);
-    return date;
-}
-
-let date = new Date();
-
+                    var date = new Date(this.valueOf());
+                    date.setDate(date.getDate() + days);
+                    return date;
+            }
+            let date = new Date();
             const finalDate = date.addDays(dayPrediction);
-            const data = Date.parse(finalDate)
-            var newTime = new Date(data).toDateString()
-console.log(newTime)
+            const data = Date.parse(finalDate);
+            var newTime = new Date(data).toDateString();
             const finalString = `At this rate, the Seattle 10,000 project will be completed in ${dayPrediction} days (${newTime}).`
                 document.getElementById("result").innerHTML = finalString;
             }
