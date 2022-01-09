@@ -3,6 +3,7 @@
     <head>
         <title>Build It 1:1 - Seattle 10,000 Completion Calculator</title>
         <link rel="icon" type="image/png" href="pippenftslogo.jpg">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="title" content="Build It 1:1 - Seattle 10,000 Completion Calculator">
     <meta name="description" content="A simple calculator that calculates the time it'll take to complete the ambitious Seattle 10,000 project.">
     <meta content="https://coolmandude545.github.io/seattle/pippenftslogo.jpg" property="og:image" />
@@ -15,7 +16,7 @@
         <h2 id='quote'>pain</h2>
         <br>
         <br>
-        <form onsubmit="event.preventDefault(); getFormData();">
+        <form autocomplete='off' onsubmit="event.preventDefault(); getFormData();">
             <label for="buildings">Enter the amount of completed buildings</label>
             <input type="username" id="buildings" name="buildings" required="">   
             <br>
@@ -34,9 +35,15 @@
             const projectDays = date_diff_indays('1/02/2022', Date());
             console.log('Debug: Your computer thinks it\'s ' + Date() + '. Does this seem correct?')
             function getFormData() {
-                const buildings = document.getElementById('buildings').value;
+                const buildings = +document.getElementById('buildings').value;
+                console.log(buildings)
                 const buildingsPerDay = buildings / projectDays
-                const dayPrediction = Math.ceil(8350 / buildingsPerDay)
+                console.log(buildingsPerDay)
+                const buildingsBuilt = 1342 + buildings
+                const buildingsLeft = 10000 - buildingsBuilt
+                console.log(buildingsBuilt)
+                console.log(buildingsLeft)
+                const dayPrediction = Math.ceil(buildingsLeft / buildingsPerDay)
                 Date.prototype.addDays = function(days) {
                     var date = new Date(this.valueOf());
                     date.setDate(date.getDate() + days);
@@ -46,12 +53,12 @@
             const finalDate = date.addDays(dayPrediction);
             const data = Date.parse(finalDate);
             var newTime = new Date(data).toDateString();
-            const finalString = `At this rate, the Seattle 10,000 project will be completed in ${dayPrediction} days (${newTime}).`
+            const finalString = `At this rate, the Seattle 10,000 project will be completed in about ${dayPrediction} days (${newTime}).`
                 document.getElementById("result").innerHTML = finalString;
             }
         </script>
         <script>
-            const randomNumber = Math.floor(Math.random() * (8 - 1 + 1) + 1)
+            const randomNumber = Math.floor(Math.random() * (9 - 1 + 1) + 1)
             let quote = ''
             switch(randomNumber) {
                 case 1:
@@ -77,6 +84,9 @@
                     break;
                 case 8:
                     quote = `<i>"seattle: the rain city--now the pain city"</i>`
+                    break;
+                case 9:
+                    quote = `<i>"now somewhat mobile optimized!"</i>`
                     break;
                 default:
                     quote = `<i>how did we get here?</i>`
