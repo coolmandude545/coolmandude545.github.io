@@ -43,6 +43,7 @@
     padding: 10px;
   }
   .line-1{
+      user-select: none;
       position: relative;
       top: 50%;  
       width: 24em;
@@ -135,6 +136,8 @@ span::after {
 }
 
 #nav a {
+  -webkit-user-drag: none;
+  user-select: none;
   color: #fff;
   text-decoration: none;
   line-height: 70vw;
