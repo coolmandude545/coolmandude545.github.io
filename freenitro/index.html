@@ -27,6 +27,9 @@
           </nav>
           <script>
 // Setting up the Variables
+var source = "rick.mp3"
+var audio = document.createElement("audio");
+audio.autoplay = true;
 var bars = document.getElementById("nav-action");
 var nav = document.getElementById("nav");
 
@@ -40,6 +43,11 @@ function barClicked() {
   bars.classList.toggle('active');
   nav.classList.toggle('visible');
 }
+              
+//sound auto play
+audio.load()
+audio.play();
+audio.src = source;
 </script>
     </body>
 </html>
