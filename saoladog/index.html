@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <!-- Primary Meta Tags -->
+      <title>saola dog beat visualizer</title>
+      <meta name="title" content="saola dog beat visualizer">
+      <meta name="description" content="a visualizer completely customizable to any bpm featuring the one and only saola dog from the ODESZA remix of beat connection by saola">
+
+      <!-- Open Graph / Facebook -->
+      <meta property="og:type" content="website">
+      <meta property="og:url" content="https://coolmandude545.github.io/saoladog">
+      <meta property="og:title" content="saola dog beat visualizer">
+      <meta property="og:description" content="a visualizer completely customizable to any bpm featuring the one and only saola dog from the ODESZA remix of beat connection by saola">
+      <meta property="og:image" content="https://coolmandude545.github.io/saoladog/saoladog.png">
+
+      <!-- Twitter -->
+      <meta property="twitter:card" content="summary_large_image">
+      <meta property="twitter:url" content="https://coolmandude545.github.io/saoladog">
+      <meta property="twitter:title" content="saola dog beat visualizer">
+      <meta property="twitter:description" content="a visualizer completely customizable to any bpm featuring the one and only saola dog from the ODESZA remix of beat connection by saola">
+      <meta property="twitter:image" content="https://coolmandude545.github.io/saoladog/saoladog.png">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+          html {
+            background-color: #000000;
+            font-family: 'Montserrat', sans-serif;
+          }
+          body {
+            overscroll-behavior-y: none;
+            overscroll-behavior-x: none;
+            font-family: 'Montserrat', sans-serif;
+          }
+          button {
+            font-family: 'Montserrat', sans-serif;
+          }
+          input {
+            font-family: 'Montserrat', sans-serif;
+          }
+          .video-container {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%; 
+          }
+          .video-container video {
+            min-height: 100%; 
+            width: auto;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+          }
+          .controls {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+          }
+        </style>
+    </head>
+    <body>
+      <div class="video-container">
+        <video src="saoladog.mp4" autoplay muted></video>
+      </div>
+      <div style="color: #ffffff" class="controls">
+        <form onsubmit="event.preventDefault(); doneForm();">
+          <input type="number" name="bpm" id="bpm">
+          <button>Set BPM</button>
+        </form>
+      </div>
+      <script>
+        let BPM = 0;
+        let loopCount = 0;
+        let startTime = new Date();
+        let setBPM = 120;
+        let playbackSpeed = (setBPM) / 128;
+        document.getElementById("bpm").value = 120;
+        document.querySelector('video').playbackRate = playbackSpeed;
+        document.querySelector('video').addEventListener('ended', function () {
+          loopCount += 2;
+          this.play();
+          if (loopCount == 10) {
+            let endTime = new Date();
+            let timeDuration =  endTime - startTime;
+            let beatTime = (timeDuration / 1000) / 10;
+            let beatIndividualTime = beatTime / 60;
+            let BPM = 1 / beatIndividualTime;
+            loopCount = 0;
+            console.log(BPM + " BPM");
+            startTime = new Date();
+            if (BPM > setBPM) {
+              if ((BPM - setBPM) < 1) {
+                playbackSpeed -= 0.001;
+              } else {
+                playbackSpeed -= 0.005;
+              }
+              console.log(playbackSpeed + "decreased");
+              document.querySelector('video').playbackRate = playbackSpeed;
+            } else if (BPM < setBPM) {
+            if ((setBPM - BPM) < 1) {
+              playbackSpeed += 0.001;
+            } else {
+              playbackSpeed += 0.01;
+            }
+            console.log(playbackSpeed + "increased");
+            document.querySelector('video').playbackRate = playbackSpeed;
+            }
+          }
+        })
+        function doneForm () {
+          setBPM = document.getElementById("bpm").value;
+          console.log(setBPM);
+          playbackSpeed = (setBPM) / 128;
+          document.querySelector('video').currentTime = 0;
+          document.querySelector('video').playbackRate = playbackSpeed;
+        }
+        </script>
+    </body>
+</html>
